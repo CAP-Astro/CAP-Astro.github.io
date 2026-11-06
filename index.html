@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAPAstro — Astro software toolchain</title>
+  <meta name="description" content="Astrophotography and astronomy software by CAPAstro: DSOF, AstroConX, MCC, Second Light AU, Batch Photon Processor, CAPBlink, FST and SuperMegaMosaic.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1215'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ffb547' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%233ddc97'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#modules">Skip to projects</a>
+
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="#top" aria-label="CAPAstro home">
+        <span class="brand__mark" aria-hidden="true"></span>CAPASTRO<span class="dim">//SYS</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#modules">Modules</a>
+        <a href="#about">About</a>
+        <a href="#contact" hidden>Contact</a>
+      </nav>
+      <div class="topbar__status mono">
+        <span class="led led--ok" aria-hidden="true"></span>
+        <span id="module-count">0</span>&nbsp;modules online
+        <span class="sep" aria-hidden="true">|</span>
+        <span id="utc-clock" aria-label="Current UTC time">--:--:--</span>&nbsp;UTC
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero__copy">
+        <p class="kicker mono">// astro software toolchain</p>
+        <h1>Tools for imaging<br>the deep sky</h1>
+        <p class="lede">A growing set of applications for planning, capturing, processing and sharing astrophotography, built by an imager, for imagers.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#modules">Browse modules</a>
+          <a class="btn" href="#contact" hidden>Get in touch</a>
+        </div>
+      </div>
+
+      <aside class="panel telemetry" aria-label="Sky telemetry">
+        <div class="panel__head mono"><span>TELEMETRY</span><span class="dim">live</span></div>
+        <dl class="telemetry__grid mono">
+          <div><dt>Modules</dt><dd id="t-modules">--</dd></div>
+          <div><dt>System</dt><dd class="ok">NOMINAL</dd></div>
+          <div><dt>UTC date</dt><dd id="t-date">--</dd></div>
+          <div><dt>UTC time</dt><dd id="t-time">--</dd></div>
+          <div><dt>Moon phase</dt><dd id="t-moon">--</dd></div>
+          <div><dt>Illumination</dt><dd id="t-illum">--</dd></div>
+        </dl>
+        <div class="moonbar" aria-hidden="true"><span id="moonbar-fill"></span></div>
+        <p class="telemetry__note mono dim" id="t-note">Calculating sky conditions…</p>
+      </aside>
+    </section>
+
+    <section id="modules" class="section wrap" aria-labelledby="modules-title">
+      <div class="section__head">
+        <div>
+          <p class="kicker mono">// 01 · modules</p>
+          <h2 id="modules-title">The toolchain</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter projects by category" id="filters"></div>
+      </div>
+      <div class="grid" id="module-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <p class="kicker mono">// 02 · operator</p>
+      <div class="about">
+        <h2 id="about-title">About CAPAstro</h2>
+        <div class="about__body">
+          <p>CAPAstro is the home of my astronomy software projects. Each tool started as a fix for a problem I hit at the telescope or at the processing desk.</p>
+          <p>Some are polished releases, others are works in progress. Open a module for details, downloads and links.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section temporarily hidden: remove the "hidden" attribute here,
+         on the Contact nav link and on the "Get in touch" button to bring it back. -->
+    <section id="contact" class="section wrap" aria-labelledby="contact-title" hidden>
+      <div class="panel contact">
+        <div>
+          <p class="kicker mono">// 03 · uplink</p>
+          <h2 id="contact-title">Open a channel</h2>
+          <p class="dim">Questions, bug reports, feature ideas or clear-sky reports are all welcome.</p>
+        </div>
+        <div class="contact__links">
+          <!-- EDIT: set your real contact links -->
+          <a class="btn btn--primary" href="mailto:you@example.com">Email</a>
+          <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner mono">
+      <span>© <span id="year"></span> CAPAstro</span>
+      <span class="dim">clear skies · end of transmission</span>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="module-modal" aria-labelledby="modal-title">
+    <div class="modal__inner">
+      <div class="panel__head mono">
+        <span id="modal-code">MOD-00</span>
+        <button class="modal__close" type="button" id="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body" id="modal-body"></div>
+    </div>
+  </dialog>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+    <button class="lightbox__close mono" type="button" id="lightbox-close" aria-label="Close viewer">✕ close</button>
+    <img id="lightbox-img" alt="">
+  </dialog>
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
