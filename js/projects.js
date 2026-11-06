@@ -234,7 +234,7 @@ window.CAPASTRO_PROJECTS = [
         "Reproject panels, harmonise backgrounds, weight by noise and low-frequency refinement",
         "Smart autocrop and a detailed report"
       ] },
-      "mmm Rust engine (accelerated) with selectable blend modes, including Pyramid for best quality",
+      "Rust engine (accelerated) with selectable blend modes, including Pyramid for best quality",
       "Superbatch, persistent settings and a live log"
     ],
     tags: ["pixinsight", "mosaic", "rust"],
